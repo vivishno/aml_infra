@@ -25,5 +25,5 @@ jobs:
           armtemplateparams_file: "arm_deploy.params.json"
           resource_group: "ChalJaa"
           appName: "fappdeployhkuoo"  
-          pattoken: {{secrets.PATTOKEN}}
+          pattoken: ${{ secrets.PATTOKEN }}
           
