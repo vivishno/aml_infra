@@ -24,10 +24,10 @@
             "value": "PrettyPoisons"
         },
         "subscriptionID": {
-            "value": "caf8e4d7-7f6c-47c3-af5f-2a09c0d54dec"
+            "value": ""
         },
         "GitHubURL": {
-            "value": "https://github.com/cs1170353/fapp_deploy.git"
+            "value": "https://github.com/mlopstemplates/function_app.git"
         },
         "funcProjectFolder": {
             "value": "fappdeploy"
