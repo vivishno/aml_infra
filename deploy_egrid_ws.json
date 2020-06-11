@@ -155,7 +155,6 @@
         },
         "GitHubURL": {
             "type": "string",
-            "defaultValue": "https://github.com/cs1170353/fapp_deploy.git",
             "metadata": {
                 "description": "The URL of GitHub (ending by .git)"
             }
@@ -212,6 +211,12 @@
         },
         "subscriptionID": {
             "type": "string"
+        },
+        "funcProjectFolder": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of folder containing the function code."
+            }
         }
     },
     "variables":{
@@ -220,7 +225,7 @@
         "funcStorageAccountName": "[tolower(concat(substring(parameters('baseName'), 0, min(length(parameters('baseName')),16)), variables('suffix'), 'stg'))]",
         "funcHhostingPlanName": "[concat(substring(parameters('baseName'), 0, min(length(parameters('baseName')),14)), variables('suffix'), 'plan')]",
         "insightsAppName":"[concat(substring(parameters('baseName'), 0, min(length(parameters('baseName')),14)), variables('suffix'), '-meta')]",
-        "functionProjectFolder": "fappdeploy",
+        "functionProjectFolder": "[parameters('funcProjectFolder')]",
         "functionUrl" : "[concat('https://', variables('funcAppName'),'.azurewebsites.net/api/', parameters('FunctionName'),'?')]",
 
         "eventGridTopicName" : "[parameters('eventGridTopicPrefix')]",
