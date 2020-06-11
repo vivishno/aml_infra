@@ -1,5 +1,4 @@
 name: slash-command
-
 on:
   issue_comment:
     types: [created]
