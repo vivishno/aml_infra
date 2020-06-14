@@ -24,6 +24,5 @@ jobs:
           armtemplate_file: "arm_deploy.json"
           armtemplateparams_file: "arm_deploy.params.json"
           resource_group: "ChalJaa"
-          appName: "onmyway4vdub"  
-          pattoken: ${{ secrets.PATTOKEN }}
-          
+          pattoken: ${{secrets.PATTOKEN}}
+          gitrepo: ${{github.repository}}      
