@@ -5,7 +5,8 @@ on:
     branches:
       - master
     paths:
-      - '.cloud/.azure/*'
+      - '.cloud/.azure/arm_deploy.json'
+      - '.cloud/.azure/arm_deploy.params.json'
 jobs:
   train:
     runs-on: ubuntu-latest
