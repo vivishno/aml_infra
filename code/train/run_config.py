@@ -27,3 +27,4 @@ def main(workspace):
         pip_packages=["azureml-dataprep[pandas,fuse]", "scikit-learn", "pandas", "matplotlib"]
     )
     return estimator
+    
