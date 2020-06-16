@@ -26,4 +26,3 @@ jobs:
           armtemplateparams_file: "arm_deploy.params.json"
           resource_group: "ashkuma_functionAppRsGroup"
           pattoken: ${{secrets.PATTOKEN}}
-          gitrepo: ${{github.repository}}      
