@@ -1,4 +1,4 @@
-name: aml-deploy
+name: generic-repodispatch
 
 on:
   repository_dispatch:
