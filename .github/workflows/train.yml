@@ -6,6 +6,10 @@ on:
       - master
     paths:
       - 'code/*'
+  
+  repository_dispatch:
+    types: [run-status-changed,data-drift-detected]
+    
 jobs:
   train:
     runs-on: ubuntu-latest
