@@ -8,7 +8,7 @@ on:
       - 'code/*'
   
   repository_dispatch:
-    types: [run-status-changed,data-drift-detected]
+    types: [run-status-changed_dummy,data-drift-detected]
     
 jobs:
   train:
