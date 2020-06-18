@@ -2,7 +2,7 @@ name: generic-repodispatch
 
 on:
   repository_dispatch:
-    types: [model-registered]
+    types: [model-registered2]
 jobs:
   deploy:
     runs-on: ubuntu-latest
