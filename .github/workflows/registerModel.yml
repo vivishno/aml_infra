@@ -1,4 +1,4 @@
-name: aml-deploy
+name: aml-register-model
 
 on:
   repository_dispatch:
