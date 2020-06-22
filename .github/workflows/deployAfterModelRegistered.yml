@@ -1,18 +1,19 @@
-name: generic-repodispatch
+name: aml-deploy-model-post-registeration
 
 on:
   repository_dispatch:
-    types: [model-registered2]
+    types: [model-registered]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check variables
         env:
-          PAYLOAD_CONTEXT: ${{ toJson(github.event) }}
+          PAYLOAD_CONTEXT: ${{ toJson(github.event.client_payload.data) }}
         run: |
-          echo "event is ${{ toJson(github.event.event_type) }}"
           if [ -z "${{ github.event.client_payload.data.ModelName }}"]; then echo "experiment id is NULL"; exit 1; else echo "model_name is ${{ toJson(github.event.client_payload.data.ModelName) }}"; fi;
+
       # # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       # - name: Check Out Repository
       #   id: checkout_repository

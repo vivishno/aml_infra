@@ -108,6 +108,29 @@ The log outputs of your action will provide URLs for you to view the resources t
 | `README.md`                   | This README file.                          |
 | `SECURITY.md`                 | Microsoft Security README.                 |
 
+
+
+## Arm template to deploy azure resources
+The workflow file 'deploy_infra.yml' uses action 'mlopstemplates/aml_configure' to deploy arm template to azure.
+Arm Template is present in './cloud/.azure/' folder (default name='arm_deploy.json') is used to deploy azure resources to azure . It uses the parameters provided in file 'azure.params.json' to create new resources or update the resources if they are already present.
+### Documentation of template file parameters
+
+| Parameter                  | Description                                |
+| ----------------------------- | ------------------------------------------ |
+| `workspaceName`                        | Specifies the name of the Azure Machine Learning workspace.If the resource doesn't exist a new workspace will be created, else existing resource will be updated using the arm template file |
+| `baseName`                  | Name used as base-template to name the resources to be deployed in Azure. |
+| `OwnerName`         | Owner of this deployment, person to contact for question. |
+| `GitHubBranch`  | Name of the branch containing azure function code. |
+| `eventGridTopicPrefix`   | The name of the Event Grid custom topic. |
+| `eventGridSubscriptionName`                 | The prefix of the Event Grid custom topic's subscription. |
+| `FunctionName`        |name of azure function used|
+| `subscriptionID` | azure subscription ID being used for deployment |
+| `GitHubURL`           | The URL of GitHub (ending by .git) containing azure function code. |
+| `funcProjectFolder`               | The name of folder containing the function code. |
+| `repo_name`           | The name of repository containing template files.This is picked up from github environment parameter 'GITHUB_REPOSITORY' |
+| `pat_token`                        | pat token to be used by the function app to communicate to github via repository dispatch. |
+
+
 ## Documentation of Azure Machine Learning GitHub Actions
 
 The template uses the open source Azure certified Actions listed below. Click on the links and read the README files for more details.
