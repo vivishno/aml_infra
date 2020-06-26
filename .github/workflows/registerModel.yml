@@ -28,7 +28,7 @@ jobs:
       # # Register model in Azure Machine Learning model registry
       - name: Register model
         id: aml_registermodel
-        uses: Azure/aml-registermodel@adddefaulttags
+        uses: Azure/aml-registermodel@ashishonce/adddefaulttags
         with:
              azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
              run_id:  ${{ github.event.client_payload.data.runId }}
