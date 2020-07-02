@@ -64,7 +64,10 @@ Please follow [this link](https://help.github.com/en/actions/configuring-and-man
 
 ### 4. Define your workspace parameters
 
-You have to modify the parameters in the <a href="/.cloud/.azure/workspace.json">`/.cloud/.azure/workspace.json"` file</a> in your repository, so that the GitHub Actions create or connect to the desired Azure Machine Learning workspace. Just click on the link and edit the file.
+You have to modify the parameters in the <a href="/.cloud/.azure/arm_deploy.params.json">`/.cloud/.azure/arm_deploy.params.json"` file</a> in your repository, so that the GitHub Actions can deploy the required resources for you.
+Just click on the link and edit the file.
+
+Hence forth update other files "workspace.json" , "compute.json" to have samve values as you provided in the arm template file. 
 
 Please use the same value for the `resource_group` parameter that you have used when generating the azure credentials. If you already have an Azure ML Workspace under that resource group, change the `name` parameter in the JSON file to the name of your workspace, if you want the Action to create a new workspace in that resource group, pick a name for your new workspace, and assign it to the `name` parameter. You can also delete the `name` parameter, if you want the action to use the default value, which is the repository name.
 
