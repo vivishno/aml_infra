@@ -14,19 +14,19 @@ jobs:
         run: |
           if [ -z "${{ github.event.client_payload.data.ModelName }}"]; then echo "experiment id is NULL"; exit 1; else echo "model_name is ${{ toJson(github.event.client_payload.data.ModelName) }}"; fi;
 
-      # # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      # - name: Check Out Repository
-      #   id: checkout_repository
-      #   uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Check Out Repository
+        id: checkout_repository
+        uses: actions/checkout@v2
 
-      # # Register model in Azure Machine Learning model registry
-      # - name: Register model
-      #   id: aml_registermodel
-      #   uses: Azure/aml-registermodel@v1
-      #   with:
-      #       azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-      #       run_id:  ${{ github.event.client_payload.data.runId }}
-      #       experiment_name: ${{ github.event.client_payload.data.experimentName }}
+      # Register model in Azure Machine Learning model registry
+      - name: Register model
+        id: aml_registermodel
+        uses: Azure/aml-registermodel@v1
+        with:
+            azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+            run_id:  ${{ github.event.client_payload.data.runId }}
+            experiment_name: ${{ github.event.client_payload.data.experimentName }}
 
 
 
@@ -43,12 +43,12 @@ jobs:
       #       @${{ github.event.client_payload.github.actor }} Just submit a deploy request.
       #       [Click here to see the deploy run output](${{ steps.vars.outputs.run-url }})
 
-      # # Connect or Create the Azure Machine Learning Workspace
-      # - name: Connect/Create Azure Machine Learning Workspace
-      #   id: aml_workspace
-      #   uses: Azure/aml-workspace@v1
-      #   with:
-      #       azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+      # Connect or Create the Azure Machine Learning Workspace
+      - name: Connect/Create Azure Machine Learning Workspace
+        id: aml_workspace
+        uses: Azure/aml-workspace@v1
+        with:
+            azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
 
       # # # Profile your model (TODO)
       # # - name: Profile Model
@@ -68,16 +68,15 @@ jobs:
       #       model_name:  ${{ github.event.client_payload.slash_command.model_name }}
       #       model_version: ${{ github.event.client_payload.slash_command.model_version }}
 
-      # # Deploy your model to dev (this is optional)
-      # - name: Dev Deploy
-      #   if: github.event.client_payload.slash_command.dev == 'true'
-      #   id: aml_dev_deploy
-      #   uses: Azure/aml-deploy@v1
-      #   with:
-      #       azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-      #       model_name:  ${{ github.event.client_payload.slash_command.model_name }}
-      #       model_version: ${{ github.event.client_payload.slash_command.model_version }}
-      #       parameters_file: "dev_aks.json"
+      # Deploy your model to dev (this is optional)
+      - name: Dev Deploy
+        id: aml_dev_deploy
+        uses: Azure/aml-deploy@v1
+        with:
+            azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+            model_name:  ${{ github.event.client_payload.data.ModelName }}
+            model_version: ${{ github.event.client_payload.data.ModelVersion }}
+            parameters_file: "deploy_aci.json"
 
       # # Deploy your model to production
       # - name: Prod Deploy
