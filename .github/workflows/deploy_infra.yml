@@ -6,7 +6,6 @@ on:
       - master
     paths:
       - '.github/workflows/deploy_infra.yml'
-
 jobs:
   train:
     runs-on: ubuntu-latest
