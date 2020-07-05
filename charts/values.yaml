@@ -3,8 +3,8 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: acrc2zegvu7zemng.azurecr.io/ang
-  tag: latest
+  repository: $(repo_name)
+  tag: $(repo_version)
   pullPolicy: IfNotPresent
 nameOverride: "test2"
 fullnameOverride: "test02"
