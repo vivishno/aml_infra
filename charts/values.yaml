@@ -3,11 +3,11 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: ${{github.env.repo_name}}
-  tag: ${{github.env.repo_version}}
+  repository: ${{ env.repo_name }}
+  tag: ${{ env.repo_version }}
   pullPolicy: IfNotPresent
-nameOverride: "testt1"
-fullnameOverride: "testt01"
+nameOverride: "testt2"
+fullnameOverride: "testt02"
 service:
   name: angular
   type: LoadBalancer
