@@ -36,7 +36,7 @@ jobs:
       with:
         renderEngine: 'helm2'
         helmChart: './charts/'
-        releaseName: test03
+        releaseName: test04
       id: bake
 
     - uses: Azure/k8s-deploy@v1
