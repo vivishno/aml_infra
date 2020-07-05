@@ -6,8 +6,8 @@ image:
   repository: ${{github.env.repo_name}}
   tag: ${{github.env.repo_version}}
   pullPolicy: IfNotPresent
-nameOverride: "test2"
-fullnameOverride: "test05"
+nameOverride: "testt1"
+fullnameOverride: "testt01"
 service:
   name: angular
   type: LoadBalancer
