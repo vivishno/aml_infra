@@ -6,8 +6,8 @@ image:
   repository: acrc2zegvu7zemng.azurecr.io/ang
   tag: latest
   pullPolicy: IfNotPresent
-nameOverride: "test1"
-fullnameOverride: "test01"
+nameOverride: "test2"
+fullnameOverride: "test02"
 service:
   name: angular
   type: LoadBalancer
