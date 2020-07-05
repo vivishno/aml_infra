@@ -14,7 +14,15 @@ jobs:
         creds: '${{ secrets.AZURE_CREDENTIALS }}'
         cluster-name: k8cluster
         resource-group: PythonSdk
-
+    
+    - name: set environment
+      run: |
+        echo "::set-env name=repo::yellow"
+    
+    - name: print env
+      run: |
+        echo $repo
+                
     - uses: Azure/k8s-create-secret@v1
       with:
         container-registry-url: acrc2zegvu7zemng.azurecr.io
@@ -26,7 +34,7 @@ jobs:
       with:
         renderEngine: 'helm2'
         helmChart: './charts/'
-        releaseName: aksappupdemo
+        releaseName: test03
       id: bake
 
     - uses: Azure/k8s-deploy@v1
