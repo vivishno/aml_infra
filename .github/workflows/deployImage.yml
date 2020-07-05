@@ -1,5 +1,7 @@
 name: CI
-on: [push, pull_request]
+on:
+  repository_dispatch:
+    types: [ImagePushed]
 
 jobs:
   build:
@@ -7,11 +9,13 @@ jobs:
     steps:
     - uses: actions/checkout@master
     
-    - name: asdad
-      run: echo "d"
+    - name: Check variables
       env:
-        MONA: hello
-
+        PAYLOAD_CONTEXT: ${{ toJson(github.event.client_payload.data) }}
+      run: |
+          echo "::set-env name=repo_name::${{ github.event.client_payload.data.target.repository }}"
+          echo "::set-env name=repo_version::${{ github.event.client_payload.data.target.tag }}"
+          
     - name: Set Context for Azure Kubernetes Cluster using azure/aks-set-context@v1 action
       uses: azure/aks-set-context@v1
       with:
@@ -21,8 +25,8 @@ jobs:
     
     - name: set environment
       run: |
-        echo "::set-env name=repo_name::acrc2zegvu7zemng.azurecr.io/ang"
-        echo "::set-env name=repo_version::latest"
+        echo "::set-env name=repo_namee::acrc2zegvu7zemng.azurecr.io/ang"
+        echo "::set-env name=repo_versione::latest"
         echo "::set-env name=tp::latest1111"
         
     
