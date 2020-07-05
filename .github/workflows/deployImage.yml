@@ -8,6 +8,7 @@ jobs:
     - uses: actions/checkout@master
     
     - name: asdad
+      run: echo "d"
       env:
         MONA: hello
 
