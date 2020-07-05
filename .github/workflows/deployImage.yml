@@ -17,11 +17,13 @@ jobs:
     
     - name: set environment
       run: |
-        echo "::set-env name=abcd::yellow"
+        echo "::set-env name=repo_name::acrc2zegvu7zemng.azurecr.io/ang"
+        echo "::set-env name=repo_version::latest"
     
     - name: print env
       run: |
-        echo $abcd
+        echo $repo_name
+        echo $repo_version
                 
     - uses: Azure/k8s-create-secret@v1
       with:
