@@ -29,13 +29,15 @@ jobs:
     - name: print env
       run: |
         echo "hello--------------------------------------------------------------------"
-        echo "${{github.env.repo_name }}"
-        echo ${{github.env.repo_version }}
-        echo ${{ github.env.tp }}
-        echo ${{ github.env.MONA }}
-        echo "${{ github.env.MONA }}"
+        echo "${{ env.repo_name }}"
+        echo ${{ env.repo_version }}
+        echo ${{ env.tp }}
+        echo ${{ env.MONA }}
+        echo "${{ env.MONA }}"
         echo "next---------------------------------------------------------------------"
-        echo $MONA 
+        echo "$MONA"
+        echo "$repo_name"
+        echo $repo_name
         echo "hello--------------------------------------------------------------------"
 
                 
