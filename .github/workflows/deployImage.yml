@@ -22,8 +22,8 @@ jobs:
     
     - name: print env
       run: |
-        echo $repo_name
-        echo $repo_version
+        echo ${{github.env.repo_name}}
+        echo ${{github.env.repo_version}}
                 
     - uses: Azure/k8s-create-secret@v1
       with:
