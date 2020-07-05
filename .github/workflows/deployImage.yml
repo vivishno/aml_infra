@@ -8,7 +8,6 @@ jobs:
     - uses: actions/checkout@master
     
     - name: asdad
-      uses: azure/aks-set-context@v1
       env:
         MONA: hello
 
