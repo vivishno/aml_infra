@@ -21,7 +21,7 @@ jobs:
       uses: azure/aks-set-context@v1
       with:
         creds: '${{ secrets.AZURE_CREDENTIALS }}'
-        cluster-name: k8cluster2
+        cluster-name: k8cluster3
         resource-group: PythonSdk
 
     - name: print env
