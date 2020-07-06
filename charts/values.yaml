@@ -6,8 +6,8 @@ image:
   repository: abcd
   tag: ade
   pullPolicy: IfNotPresent
-nameOverride: "testt3"
-fullnameOverride: "testt03"
+nameOverride: "testt43"
+fullnameOverride: "testt04"
 service:
   name: angular
   type: LoadBalancer
