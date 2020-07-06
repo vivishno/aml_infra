@@ -60,6 +60,6 @@ jobs:
       with:
         manifests: ${{ steps.bake.outputs.manifestsBundle }}
         images: |
-          "${{ env.repo_name }}":${{ env.repo_version }}
+          "${{ env.repo_name }}:${{ env.repo_version }}"
         imagepullsecrets: |
           demo-k8s-secret
