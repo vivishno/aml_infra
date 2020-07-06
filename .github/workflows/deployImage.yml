@@ -27,14 +27,14 @@ jobs:
       run: |
         echo "::set-env name=repo_namee::acrc2zegvu7zemng.azurecr.io/ang"
         echo "::set-env name=repo_versione::latest"
-        echo "::set-env name=tp::latest1111"
+        echo "::set-env name=tp::${{ env.repo_name }}:${{ env.repo_version }}"
         
     
     - name: print env
       run: |
         echo "hello--------------------------------------------------------------------"
         echo "${{ env.repo_name }}:${{ env.repo_version }}"
-        echo "${{ env.repo_name }}"
+        echo ${{ env.tp }}
         echo ${{ env.repo_version }}
         echo "hello--------------------------------------------------------------------"
 
@@ -54,13 +54,13 @@ jobs:
         overrides: |     
           image.repository: ${{ env.repo_name }}
           image.tag: ${{ env.repo_version }}
-        releaseName: test14
+        releaseName: test15
       id: bake
 
     - uses: Azure/k8s-deploy@v1
       with:
         manifests: ${{ steps.bake.outputs.manifestsBundle }}
         images: |
-          acrc2zegvu7zemng.azurecr.io/ang:latest
+          ${{ env.tp }}
         imagepullsecrets: |
           demo-k8s-secret
