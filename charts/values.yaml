@@ -3,11 +3,11 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: abcd
-  tag: ade
+  repository: testRepo
+  tag: testTag
   pullPolicy: IfNotPresent
-nameOverride: "testt433"
-fullnameOverride: "testt0433"
+nameOverride: "testName"
+fullnameOverride: "testFullName"
 service:
   name: angular
   type: LoadBalancer
