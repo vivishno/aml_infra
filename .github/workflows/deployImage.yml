@@ -15,7 +15,7 @@ jobs:
       run: |
           echo "::set-env name=repo_name::${{ github.event.client_payload.data.target.repository }}"
           echo "::set-env name=repo_version::${{ github.event.client_payload.data.target.tag }}"
-          echo "::set-env name=image_name::${{ env.repo_name }}:${{ env.repo_version }}"
+          echo "::set-env name=image_name::${{ github.event.client_payload.data.target.repository }}":${{ github.event.client_payload.data.target.tag }}"
           
     - name: Set Context for Azure Kubernetes Cluster using azure/aks-set-context@v1 action
       uses: azure/aks-set-context@v1
@@ -47,7 +47,7 @@ jobs:
         overrides: |     
           image.repository: ${{ env.repo_name }}
           image.tag: ${{ env.repo_version }}
-        releaseName: test17
+        releaseName: test18
       id: bake
 
     - uses: Azure/k8s-deploy@v1
