@@ -15,6 +15,7 @@ jobs:
       run: |
           echo "::set-env name=repo_name::${{ github.event.client_payload.data.target.repository }}"
           echo "::set-env name=repo_version::${{ github.event.client_payload.data.target.tag }}"
+          echo "::set-env name=image_name::${{ env.repo_name }}:${{ env.repo_version }}"
           
     - name: Set Context for Azure Kubernetes Cluster using azure/aks-set-context@v1 action
       uses: azure/aks-set-context@v1
@@ -22,22 +23,6 @@ jobs:
         creds: '${{ secrets.AZURE_CREDENTIALS }}'
         cluster-name: k8cluster2
         resource-group: PythonSdk
-    
-    - name: set environment
-      run: |
-        echo "::set-env name=repo_namee::acrc2zegvu7zemng.azurecr.io/ang"
-        echo "::set-env name=repo_versione::latest"
-        echo "::set-env name=tp::${{ env.repo_name }}:${{ env.repo_version }}"
-        
-    
-    - name: print env
-      run: |
-        echo "hello--------------------------------------------------------------------"
-        echo "${{ env.repo_name }}:${{ env.repo_version }}"
-        echo ${{ env.tp }}
-        echo ${{ env.repo_version }}
-        echo "hello--------------------------------------------------------------------"
-
                 
     - uses: Azure/k8s-create-secret@v1
       with:
@@ -54,13 +39,13 @@ jobs:
         overrides: |     
           image.repository: ${{ env.repo_name }}
           image.tag: ${{ env.repo_version }}
-        releaseName: test15
+        releaseName: test16
       id: bake
 
     - uses: Azure/k8s-deploy@v1
       with:
         manifests: ${{ steps.bake.outputs.manifestsBundle }}
         images: |
-          ${{ env.tp }}
+          ${{ env.image_name }}
         imagepullsecrets: |
           demo-k8s-secret
