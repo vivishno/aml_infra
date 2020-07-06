@@ -6,13 +6,13 @@ image:
   repository: acrc2zegvu7zemng.azurecr.io/ang
   tag: latest
   pullPolicy: IfNotPresent
-nameOverride: "testt2"
-fullnameOverride: "testt02"
+nameOverride: "testt3"
+fullnameOverride: "testt03"
 service:
   name: angular
   type: LoadBalancer
-  externalPort: 8081
-  internalPort: 8081
+  externalPort: 8082
+  internalPort: 8082
 resources:
   limits:
     cpu: 100m
