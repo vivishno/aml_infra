@@ -51,9 +51,9 @@ jobs:
         helmChart: './charts/'
         overrideFiles: './charts/values.yaml'
         overrides: |     
-          image.repository: acrc2zegvu7zemng.azurecr.io/ang
-          image.tag: latest
-        releaseName: test08
+          image.repository: ${{ env.repo_name }}
+          image.tag: latest ${{ env.repo_version }}
+        releaseName: test09
       id: bake
 
     - uses: Azure/k8s-deploy@v1
