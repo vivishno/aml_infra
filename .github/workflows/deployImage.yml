@@ -33,6 +33,7 @@ jobs:
     - name: print env
       run: |
         echo "hello--------------------------------------------------------------------"
+        echo "${{ env.repo_name }}:${{ env.repo_version }}"
         echo "${{ env.repo_name }}"
         echo ${{ env.repo_version }}
         echo "hello--------------------------------------------------------------------"
@@ -52,8 +53,8 @@ jobs:
         overrideFiles: './charts/values.yaml'
         overrides: |     
           image.repository: ${{ env.repo_name }}
-          image.tag: latest ${{ env.repo_version }}
-        releaseName: test11
+          image.tag: ${{ env.repo_version }}
+        releaseName: test12
       id: bake
 
     - uses: Azure/k8s-deploy@v1
