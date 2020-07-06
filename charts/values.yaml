@@ -6,13 +6,13 @@ image:
   repository: abcd
   tag: ade
   pullPolicy: IfNotPresent
-nameOverride: "testt43"
-fullnameOverride: "testt04"
+nameOverride: "testt433"
+fullnameOverride: "testt0433"
 service:
   name: angular
   type: LoadBalancer
-  externalPort: 8083
-  internalPort: 8083
+  externalPort: 8084
+  internalPort: 8084
 resources:
   limits:
     cpu: 100m
