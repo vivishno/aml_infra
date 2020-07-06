@@ -20,7 +20,7 @@ jobs:
       uses: azure/aks-set-context@v1
       with:
         creds: '${{ secrets.AZURE_CREDENTIALS }}'
-        cluster-name: k8cluster2
+        cluster-name: k8cluster
         resource-group: PythonSdk
     
     - name: set environment
@@ -49,7 +49,11 @@ jobs:
       with:
         renderEngine: 'helm2'
         helmChart: './charts/'
-        releaseName: test07
+        overrideFiles: './charts/values.yaml'
+        overrides: |     
+          image.repository: acrc2zegvu7zemng.azurecr.io/ang
+          image.tag: latest
+        releaseName: test08
       id: bake
 
     - uses: Azure/k8s-deploy@v1
