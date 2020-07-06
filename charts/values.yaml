@@ -11,8 +11,8 @@ fullnameOverride: "testt0433"
 service:
   name: angular
   type: LoadBalancer
-  externalPort: 8084
-  internalPort: 8084
+  externalPort: 8085
+  internalPort: 8085
 resources:
   limits:
     cpu: 100m
