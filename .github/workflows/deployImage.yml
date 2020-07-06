@@ -53,13 +53,13 @@ jobs:
         overrides: |     
           image.repository: ${{ env.repo_name }}
           image.tag: latest ${{ env.repo_version }}
-        releaseName: test09
+        releaseName: test10
       id: bake
 
     - uses: Azure/k8s-deploy@v1
       with:
         manifests: ${{ steps.bake.outputs.manifestsBundle }}
         images: |
-          acrc2zegvu7zemng.azurecr.io/ang:latest
+          "${{ env.repo_name }}":${{ env.repo_version }}
         imagepullsecrets: |
           demo-k8s-secret
