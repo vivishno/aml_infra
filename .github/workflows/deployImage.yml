@@ -23,20 +23,12 @@ jobs:
         creds: '${{ secrets.AZURE_CREDENTIALS }}'
         cluster-name: k8cluster3
         resource-group: PythonSdk
-
-    - name: print env
-      run: |
-        echo "hello--------------------------------------------------------------------"
-        echo "${{ env.repo_name }}:${{ env.repo_version }}"
-        echo ${{ env.image_name }}
-        echo ${{ env.repo_version }}
-        echo "hello--------------------------------------------------------------------"
     
     - uses: Azure/k8s-create-secret@v1
       with:
         container-registry-url: acrc2zegvu7zemng.azurecr.io
-        container-registry-username: acrc2zegvu7zemng
-        container-registry-password: fmdPwgET16HQLz3OWzu9QG=jifqduJ7e
+        container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
+        container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
         secret-name: demo-k8s-secret
 
     - uses: azure/k8s-bake@v1
@@ -47,7 +39,7 @@ jobs:
         overrides: |     
           image.repository: ${{ env.repo_name }}
           image.tag: ${{ env.repo_version }}
-        releaseName: test19
+        releaseName: test
       id: bake
 
     - uses: Azure/k8s-deploy@v1
