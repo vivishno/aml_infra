@@ -35,13 +35,6 @@ jobs:
         echo "hello--------------------------------------------------------------------"
         echo "${{ env.repo_name }}"
         echo ${{ env.repo_version }}
-        echo ${{ env.tp }}
-        echo ${{ env.MONA }}
-        echo "${{ env.MONA }}"
-        echo "next---------------------------------------------------------------------"
-        echo "$MONA"
-        echo "$repo_name"
-        echo $repo_name
         echo "hello--------------------------------------------------------------------"
 
                 
@@ -56,7 +49,11 @@ jobs:
       with:
         renderEngine: 'helm2'
         helmChart: './charts/'
-        releaseName: test04
+        overrideFiles: './charts/values.yaml'
+        overrides: |     
+          image.repository: acrc2zegvu7zemng.azurecr.io/ang
+          image.tag: latest
+        releaseName: test06
       id: bake
 
     - uses: Azure/k8s-deploy@v1
