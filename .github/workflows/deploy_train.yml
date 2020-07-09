@@ -19,7 +19,7 @@ jobs:
     # Connect or Create the Azure Machine Learning Workspace
     - name: deploy all resources
       id: aml_configure
-      uses: mlopstemplates/aml_configure@releases/v1
+      uses: mlopstemplates/aml_configure@v1
       with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           armtemplate_file: "arm_deploy.json"
