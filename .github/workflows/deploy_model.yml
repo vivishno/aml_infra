@@ -21,9 +21,10 @@ jobs:
     
       - name: Connect/Create Azure Machine Learning Workspace
         id: aml_workspace
-        uses: Azure/aml-workspace@v1
+        uses: Azure/aml-workspace@ashishonce/demochanges
         with:
             azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+            resource_group:  ${{ secrets.AZURE_RESOURCE_GROUP }}
 
       # # Register model in Azure Machine Learning model registry
       - name: Register model

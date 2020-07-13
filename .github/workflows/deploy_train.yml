@@ -23,16 +23,17 @@ jobs:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           armtemplate_file: "arm_deploy.json"
           armtemplateparams_file: "arm_deploy.params.json"
-          resource_group: "testgroup"
+          resource_group: ${{ secrets.AZURE_RESOURCE_GROUP }}
           mapped_params: '{"patToken":"${{secrets.PATTOKEN}}", "computeName":"mycluster", "workspaceName":"amlconfigureTest" }'
 
     # now send for training.
     # Connect or Create the Azure Machine Learning Workspace
     - name: Connect/Create Azure Machine Learning Workspace
       id: aml_workspace
-      uses: Azure/aml-workspace@v1
+      uses: Azure/aml-workspace@ashishonce/demochanges
       with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+          resource_group:  ${{ secrets.AZURE_RESOURCE_GROUP }}
       
     # Submit a training run to the Azure Machine Learning
     - name: Submit training run
