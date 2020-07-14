@@ -39,6 +39,10 @@ jobs:
           resource_group: "ashkuma_ghubtestgroup"
           pattoken: ${{secrets.PATTOKEN}}
 
+      - name: Display subscription endpoint
+        run: |
+          echo subscription-endpoint: ${{ steps.azure_eventgridsubscriber.outputs.destination_url}}
+
     # now send for training.
     # Connect or Create the Azure Machine Learning Workspace
     - name: Connect/Create Azure Machine Learning Workspace
