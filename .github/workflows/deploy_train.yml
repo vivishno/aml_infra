@@ -27,7 +27,7 @@ jobs:
           mapped_params: '{"patToken":"${{secrets.PATTOKEN}}", "computeName":"mycluster", "workspaceName":"amlconfigureTest" }'
 
     # Deploys function app and creates an event grid subscription
-    - name: create event subscription
+    - name: Create Event Subscription
       id: azure_eventgridsubscriber
       uses: mlopstemplates/azure_eventgridsubscriber@master
       with:
