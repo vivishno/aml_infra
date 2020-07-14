@@ -2,7 +2,7 @@ name: aml-register-model
 
 on:
   repository_dispatch:
-    types: [machinelearning-runcompleted]
+    types: [machinelearningservices-runcompleted]
 
 jobs:
   deploy:
