@@ -1,5 +1,5 @@
 # Sample WF Azure Machine Learning  
-name: aml-deploy-infrastructure 
+name: aml-deploy-infrastructure-submit-train 
 on:
   push:
     branches:
