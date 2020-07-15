@@ -23,7 +23,7 @@ jobs:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           armtemplate_file: "arm_deploy.json"
           armtemplateparams_file: "arm_deploy.params.json"
-          resource_group: ashkuma_ghubtestgroup
+          resource_group: ${{ secrets.AZURE_RESOURCE_GROUP }}
           mapped_params: '{"patToken":"${{secrets.PATTOKEN}}", "computeName":"mycluster", "workspaceName":"amlconfigureTest" }'
 
     # Deploys function app and creates an event grid subscription
@@ -36,7 +36,7 @@ jobs:
             Microsoft.MachineLearningServices.RunCompleted
             Microsoft.MachineLearningServices.ModelRegistered
           provider_type: "Microsoft.MachineLearningServices/workspaces/amlconfigureTest"
-          resource_group: "ashkuma_ghubtestgroup"
+          resource_group: ${{ secrets.AZURE_RESOURCE_GROUP }}
           pattoken: ${{secrets.PATTOKEN}}
 
     - name: Display subscription endpoint
