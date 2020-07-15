@@ -43,6 +43,7 @@ jobs:
       run: |
         echo subscription-endpoint: ${{ steps.azure_eventgridsubscriber.outputs.destination_url}}
 
+        
     # now send for training.
     # Connect or Create the Azure Machine Learning Workspace
     - name: Connect/Create Azure Machine Learning Workspace
