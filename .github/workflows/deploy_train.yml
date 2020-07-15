@@ -33,8 +33,8 @@ jobs:
       with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           events_to_subscribe: |
-            Microsoft.MachineLearningServices.RunStatusChanged
-            Microsoft.MachineLearningServices.RunCompleted  
+            Microsoft.MachineLearningServices.RunCompleted
+            Microsoft.MachineLearningServices.ModelRegistered
           provider_type: "Microsoft.MachineLearningServices/workspaces/amlconfigureTest"
           resource_group: "ashkuma_ghubtestgroup"
           pattoken: ${{secrets.PATTOKEN}}
