@@ -24,7 +24,7 @@ jobs:
           armtemplate_file: "arm_deploy.json"
           armtemplateparams_file: "arm_deploy.params.json"
           resource_group: ${{ secrets.AZURE_RESOURCE_GROUP }}
-          mapped_params: '{"patToken":"${{secrets.PATTOKEN}}", "computeName":"mycluster", "workspaceName":"amlconfigureTest" }'
+          mapped_params: '{"patToken":"${{secrets.PATTOKEN}}", "computeName":"mycluster", "workspaceName":"${{secrets.WORKSPACE_NAME}}" }'
 
     # Deploys function app and creates an event grid subscription
     - name: Create Event Subscription
@@ -35,7 +35,7 @@ jobs:
           events_to_subscribe: |
             Microsoft.MachineLearningServices.RunCompleted
             Microsoft.MachineLearningServices.ModelRegistered
-          provider_type: "Microsoft.MachineLearningServices/workspaces/amlconfigureTest"
+          provider_type: "Microsoft.MachineLearningServices/workspaces/${{secrets.WORKSPACE_NAME}}"
           resource_group: ${{ secrets.AZURE_RESOURCE_GROUP }}
           pattoken: ${{secrets.PATTOKEN}}
 
@@ -52,7 +52,7 @@ jobs:
       with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           resource_group:  ${{ secrets.AZURE_RESOURCE_GROUP }}
-          workspace_name: amlconfigureTest
+          workspace_name: ${{secrets.WORKSPACE_NAME}}
       
     # Submit a training run to the Azure Machine Learning
     - name: Submit training run

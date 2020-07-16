@@ -25,6 +25,7 @@ jobs:
         with:
             azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
             resource_group:  ${{ secrets.AZURE_RESOURCE_GROUP }}
+            workspace_name: ${{secrets.WORKSPACE_NAME}}
 
       # # Register model in Azure Machine Learning model registry
       - name: Register model
