@@ -1,8 +1,6 @@
 name: aml-register-model
 
-on:
-  repository_dispatch:
-    types: [push] 
+on: [push] 
 
 jobs:
   deploy:
