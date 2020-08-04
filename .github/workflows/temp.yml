@@ -1,0 +1,33 @@
+name: aml-register-model
+
+on:
+  repository_dispatch:
+    types: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Check Out Repository
+        id: checkout_repository
+        uses: actions/checkout@v2
+    
+
+       # Deploy your model to production
+       - name: Prod Deploy
+         id: aml_prod_deploy
+         uses: Azure/aml-deploy@v1
+         with:
+             azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+             model_name: mymodel
+             model_version: 1
+             parameters_file: "deploy_aks.json"
+
+       - name: Display AKS Deploy Details
+         run: |
+           echo scoring-endpoint: ${{ steps.aml_prod_deploy.outputs.service_scoring_uri}}
+           echo swagger-uri: ${{ steps.aml_prod_deploy.outputs.service_swagger_uri}}
+
+
+
