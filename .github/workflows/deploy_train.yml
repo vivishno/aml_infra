@@ -3,7 +3,7 @@ name: aml-deploy-infrastructure-submit-train
 on:
   push:
     branches:
-      - master
+      - master 
     paths:
       - '.github/workflows/deploy_train.yml'
 jobs:
